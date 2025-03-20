@@ -1,0 +1,50 @@
+# API Configuration
+api:
+  openai:
+    api_key: "your-openai-api-key"
+    model: "gpt-4-turbo-preview"
+    temperature: 0.7
+    max_tokens: 2000
+  yolo:
+    model: "yolov8n.pt"
+    confidence_threshold: 0.5
+  search:
+    max_results: 5
+    timeout: 30
+
+# Workflow Configuration
+workflow:
+  max_retries: 3
+  retry_delay: 5
+  timeout: 300
+
+# Output Configuration
+output:
+  formats:
+    - markdown
+    - html
+    - pdf
+  directory: "./output"
+  file_naming: "{title}_{date}"
+  templates:
+    markdown: templates/markdown.j2
+    html: templates/html.j2
+    pdf: templates/pdf.j2
+
+# Logging Configuration
+logging:
+  level: INFO
+  file: logs/app.log
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"
+  rotation: "1 day"
+  retention: "7 days"
+
+# Processing Modes
+modes:
+  quick_summary:
+    max_length: 500
+    include_transcript: false
+  detailed_review:
+    max_length: 2000
+    include_transcript: true
+    search_enabled: true 
